@@ -63,6 +63,8 @@ Runs the app in development mode. Open http://localhost:3000 to view it in the b
 
     - The page will automatically reload if you make changes to the code. You will see the build errors and lint warnings in the console.
     
+![](https://github.com/DrVicki/connecting-to-react/blob/main/images2/react.png)
+    
 `npm run build` or `yarn build`
 
 Builds the app for production to the build folder. It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -71,88 +73,230 @@ Builds the app for production to the build folder. It correctly bundles React in
 
     - Your app is ready to be deployed.
 
-## Add a Component
+**Install the dependencies required in this project by typing the given command in the terminal.*
+
+```
+npm install react-router-dom 
+npm install --save styled-components
+```
+
+## Add Components
 
 Defining a component can seem tricky until you have some practice, but the gist is:
 
     - If it represents an obvious "chunk" of your app, it's probably a component
     - If it gets reused often, it's probably a component.
 
-That second bullet is especially valuable: making a component out of common UI elements allows you to change your code in one place and see those changes everywhere that component is used. 
-    - You don't have to break everything out into components right away, either. Let's take the second bullet point as inspiration and make a component out of the most reused, most important piece of the UI: a todo list item.
-    
-## Make a <Todo />
 
-Before we can make a component, we should create a new file for it. In fact, we should make a directory just for our components. The following commands make a components directory and then, within that, a file called `Todo.js`. Make sure you're in the root of your app before you run these!
+Now create the `Components` folder in `src` then go to the `Components` folder and create a new folder name `Navbar`.In `Navbar` folder create two files `Navbar.js` and `NavbarElements.js`. Create one more folder in `src` named `pages` and in `pages` create files name `about.js`, `blogs.js`, `index.js`.
 
 ```
-mkdir src/components
-touch src/components/Todo.js
+mkdir src/Components
+mkdir src/Components/Navbar
+touch src/Components/Navbar/Navbar.js
+touch src/Components/Navbar/NavbarElements.js
+mkdir src/Components/pages
+touch src/Components/pages/about.js
+touch src/Components/pages/blogs.js
+touch src/Components/pages/index.js
 ```
 
-Our new `Todo.js` file is currently empty! Open it up and give it its first line:
 
-`import React from "react"`;
+### Create the navbar and style it.
 
-Since we're going to make a component called `Todo`, you can start adding the code for that to `Todo.js` too, as follows. In this code, we define the function and export it on the same line:
+Navbar.js
 
 ```
-export default function Todo() {
-  return (
-    // …
-  );
+import React from "react";
+import { Nav, NavLink, NavMenu }
+	from "./NavbarElements";
+
+const Navbar = () => {
+return (
+	<>
+	<Nav>
+		<NavMenu>
+		<NavLink to="/about" activeStyle>
+			About
+		</NavLink>
+		<NavLink to="/blogs" activeStyle>
+			Blogs
+		</NavLink>
+		</NavMenu>
+	</Nav>
+	</>
+);
+};
+
+export default Navbar;
+```
+
+NavbarElements.js
+
+```
+import { FaBars } from "react-icons/fa";
+import { NavLink as Link } from "react-router-dom";
+import styled from "styled-components";
+
+export const Nav = styled.nav`
+background: #ffb3ff;
+height: 85px;
+display: flex;
+justify-content: space-between;
+padding: 0.2rem calc((100vw - 1000px) / 2);
+z-index: 12;
+`;
+
+export const NavLink = styled(Link)`
+color: #808080;
+display: flex;
+align-items: center;
+text-decoration: none;
+padding: 0 1rem;
+height: 100%;
+cursor: pointer;
+&.active {
+	color: #4d4dff;
 }
+`;
+
+export const Bars = styled(FaBars)`
+display: none;
+color: #808080;
+@media screen and (max-width: 768px) {
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	transform: translate(-100%, 75%);
+	font-size: 1.8rem;
+	cursor: pointer;
+}
+`;
+
+export const NavMenu = styled.div`
+display: flex;
+align-items: center;
+margin-right: -24px;
+/* Second Nav */
+/* margin-right: 24px; */
+/* Third Nav */
+/* width: 100vw;
+white-space: nowrap; */
+@media screen and (max-width: 768px) {
+	display: none;
+}
+`;
 ```
 
-This is OK so far, but our component has to return something! Go back to src/App.js, copy the first <li> from inside the unordered list, and paste it into Todo.js so that it reads like this:
+### Edit pages in the project in `src/pages`
 
-export default function Todo() {
-  return (
-    <li className="todo stack-small">
-      <div className="c-cb">
-        <input id="todo-0" type="checkbox" defaultChecked={true} />
-        <label className="todo-label" htmlFor="todo-0">
-          Eat
-        </label>
-      </div>
-      <div className="btn-group">
-        <button type="button" className="btn">
-          Edit <span className="visually-hidden">Eat</span>
-        </button>
-        <button type="button" className="btn btn__danger">
-          Delete <span className="visually-hidden">Eat</span>
-        </button>
-      </div>
-    </li>
-  );
+src/pages/about.js
+
+```
+import React from "react";
+
+const About = () => {
+return (
+	<div>
+	<h1>
+		LearningSource creates Software Developers!
+	</h1>
+	</div>
+);
+};
+
+export default About;
+```
+
+src/pages/blogs.js
+
+```
+import React from 'react';
+
+const Blogs = () => {
+return (
+	<h1>You can write your blogs!</h1>
+);
+};
+
+export default Blogs;
+```
+
+src/pages/index.js
+
+```
+import React from 'react';
+
+const Home = () => {
+return (
+	<div>
+	<h1>Welcome to LearningSource</h1>
+	</div>
+);
+};
+
+export default Home;
+```
+
+index.js
+
+```
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
+```
+
+app.js
+
+```
+/* eslint-disable react/jsx-no-duplicate-props */
+/* eslint-disable no-unused-vars */
+
+import React from 'react';
+import './App.css';
+import Navbar from './Components/NavBar/Navbar';
+import { BrowserRouter as Router, Routes, Route}
+	from 'react-router-dom';
+
+import About from './pages/about';
+import Blogs from './pages/blogs';
+
+
+function App() {
+return (
+	<Router>
+	<Navbar />
+	<Routes>
+		<Route path='/about' element={<About/>} />
+		<Route path='/blogs' element={<Blogs/>} />
+		
+	</Routes>
+	</Router>
+);
 }
-Copy to Clipboard
-Note: Components must always return something. If at any point in the future you try to render a component that does not return anything, React will display an error in your browser.
 
-Our Todo component is complete, at least for now; now we can use it. In App.js, add the following line near the top of the file to import Todo:
+export default App;
+```
 
-import Todo from "./components/Todo";
-Copy to Clipboard
-With this component imported, you can replace all of the <li> elements in App.js with <Todo /> component calls. Your <ul> should read like this:
+## Run the Application
 
-<ul
-  role="list"
-  className="todo-list stack-large stack-exception"
-  aria-labelledby="list-heading"
->
-  <Todo />
-  <Todo />
-  <Todo />
-</ul>
-Copy to Clipboard
-When you look back at your browser, you'll notice something unfortunate: your list now repeats the first task three times!
+Now to run the above code open the terminal and type the following command.
 
-
-
-
-
-
-
-
+`npm start`
 
 
