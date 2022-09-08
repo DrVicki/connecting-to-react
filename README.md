@@ -25,27 +25,20 @@ Then open http://localhost:3000/ to see your app.
 
 When you’re ready to deploy to production, create a minified bundle with `npm run build`.
 
-### Creating an App
-
-You’ll need to have Node >= 14 on your local development machine (but it’s not required on the server). You can use nvm (macOS/Linux) or nvm-windows to switch Node versions between different projects.
-
-To create a new app:
-    - `npx create-react-app my-app`
-
 #### Selecting a package manager
 
 When you create a new app, the CLI will use npm or Yarn to install dependencies, depending on which tool you use to run `create-react-app`. For example:
 
 ```
 # Run this to use npm
-npx create-react-app my-app
+npx create-react-app react-api-eater
 # Or run this to use yarn
-yarn create react-app my-app
+yarn create react-app react-api-eater
 ```
 
 #### Output
 
-Running any of these commands will create a directory called `my-app` inside the current folder. Inside that directory, it will generate the initial project structure and install the transitive dependencies:
+Running any of these commands will create a directory called `react-api-eater` inside the current folder. Inside that directory, it will generate the initial project structure and install the transitive dependencies:
 
 ![](https://github.com/DrVicki/connecting-to-react/blob/main/images2/folderstructure.png)
 
@@ -73,7 +66,7 @@ Builds the app for production to the build folder. It correctly bundles React in
 
     - Your app is ready to be deployed.
 
-**Install the dependencies required in this project by typing the given command in the terminal.*
+**Install the dependencies required in this project by typing the given command in the terminal.**
 
 ```
 npm install react-router-dom 
@@ -300,3 +293,6 @@ Now to run the above code open the terminal and type the following command.
 `npm start`
 
 ![](https://github.com/DrVicki/connecting-to-react/blob/main/images2/about.png)
+
+
+
