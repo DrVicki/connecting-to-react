@@ -15,3 +15,6 @@ npx create-react-app react-api-eater
 cd react-api-eater
 code .
 ```
+
+To run the app open the VS Code built-in terminal and enter `npm start`. The browser will greet you on the default home page.
+
