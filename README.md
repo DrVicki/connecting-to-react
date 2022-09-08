@@ -17,11 +17,6 @@ npx create-react-app react-api-eater
 cd react-api-eater
 ```
 
-To run the app open the VS Code built-in terminal and enter `npm start`. The browser will greet you on the default home page.
-
-Then open http://localhost:3000/ to see your app.
-
-![](https://github.com/DrVicki/connecting-to-react/blob/main/images2/react.png)
 
 When you’re ready to deploy to production, create a minified bundle with `npm run build`.
 
