@@ -227,6 +227,8 @@ return (
 export default Home;
 ```
 
+## Render the Components
+
 index.js
 
 ```
