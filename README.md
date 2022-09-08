@@ -299,5 +299,4 @@ Now to run the above code open the terminal and type the following command.
 
 `npm start`
 
-![](https://github.com/DrVicki/connecting-to-react/blob/main/images2/run.png)
-![]
+![](https://github.com/DrVicki/connecting-to-react/blob/main/images2/about.png)
